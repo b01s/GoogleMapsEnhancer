@@ -20,7 +20,7 @@
 			<key>defaults</key>
 			<string>com.b01s.googlemapsenhancer</string>
 			<key>label</key>
-			<string>Following Mode at startup</string>
+			<string>Compass Mode at startup</string>
 			<key>key</key>
 			<string>autoFollowingMode</string>
 		</dict>
