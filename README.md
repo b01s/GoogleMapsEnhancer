@@ -23,7 +23,7 @@ Configure options from Settings app.
 Compatible with iOS 11.
 Tested on Google Maps ver. 5.0 and 5.1.
 
-Greatly appreciate Sayed's contribution!
+Greatly appreciate <a href="https://www.reddit.com/user/sayed_000">Sayed</a>'s contribution!
 
 <img src="https://github.com/b01s/GoogleMapsEnhancer/blob/master/images/default_mode.png" width="320px">
 
