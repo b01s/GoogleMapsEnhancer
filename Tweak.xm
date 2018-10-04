@@ -76,6 +76,11 @@ struct GMSVectorMapMode {
 - (void)didTapLocationButton:(id)arg1;
 @end
 
+@interface RootViewController ()
+- (void)startTimer;
+- (void)tapLocationButton:(NSTimer*)timer;
+@end
+
 RootViewController *rootViewController=nil;
 
 //TODO: Can be in RootViewController's category or extension?
@@ -86,7 +91,7 @@ RootViewController *rootViewController=nil;
 
 @implementation ForTimerClass
 - (void)startTimer {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.25f
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.5f
                                              target:self
                                            selector:@selector(tapLocationButton:)
                                            userInfo:nil
@@ -102,11 +107,25 @@ RootViewController *rootViewController=nil;
 
 
 %hook RootViewController
+
+%new
+- (void)startTimer {
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.25f
+                                             target:self
+                                           selector:@selector(tapLocationButton:)
+                                           userInfo:nil
+                                            repeats:NO
+                      ];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+%new
+- (void)tapLocationButton:(NSTimer*)timer {
+    [self didTapLocationButton:[%c(AZImages) locationButton]];
+}
+
 //- (void)viewDidLoad{
 - (void)viewWillAppear:(BOOL)arg1 {
     %orig;
-//    id locationButton = [%c(AZImages) locationButton];
-//    [self didTapLocationButton:locationButton];
     
     [self setWatermarkHidden:YES animated:NO];
     
@@ -115,6 +134,7 @@ RootViewController *rootViewController=nil;
 //    // Will be extracted as optinal
 //    ForTimerClass *forTimer = [%c(ForTimerClass) new];
 //    [forTimer startTimer];
+    [self startTimer];
     
 #pragma mark - Search Bar related
     
