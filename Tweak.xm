@@ -2,10 +2,12 @@
 
 static NSMutableDictionary *prefs;
 
-static float alphaOfSearchBar = 0.5;
+static BOOL tweakEnabled = YES;
 
+static float alphaOfSearchBar = 0.5;
 static float alphaOfFooterTabBar = 0.5;
 
+static BOOL autoFollowingMode = NO;
 static float cameraZoomLevelValue = 17.25;
 static float cameraLookAheadValue = 0.4718;
 static float cameraViewingAngleValue = 65;
@@ -30,10 +32,12 @@ static void loadPrefs()
 {
     prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.b01s.googlemapsenhancer.plist"];
     if(prefs) {
-        alphaOfSearchBar = floatValueForKey(@"alphaOfSearchBar", 0.5);
+        tweakEnabled = boolValueForKey(@"tweakEnabled", YES);
         
+        alphaOfSearchBar = floatValueForKey(@"alphaOfSearchBar", 0.5);
         alphaOfFooterTabBar = floatValueForKey(@"alphaOfFooterTabBar", 0.5);
         
+        autoFollowingMode = boolValueForKey(@"autoFollowingMode", NO);
         cameraZoomLevelValue = floatValueForKey(@"cameraZoomLevelValue", 17.25);
         cameraLookAheadValue = floatValueForKey(@"cameraLookAheadValue", 0.4718);
         cameraViewingAngleValue = floatValueForKey(@"cameraViewingAngleValue", 65);
@@ -48,13 +52,8 @@ static void loadPrefs()
     [prefs release];
 }
 
-%ctor
-{
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.b01s.googlemapsenhancer/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-    loadPrefs();
-}
 
-#pragma mark - Auto following mode
+#pragma mark - Auto compass mode
 
 @interface AZImages
 + (id)locationButton;
@@ -70,51 +69,40 @@ struct GMSVectorMapMode {
 }
 // Search bar
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
-//TODO: Will hide Google logo mark
+// Hide Google logo mark
 - (void)setWatermarkHidden:(_Bool)arg1 animated:(_Bool)arg2;
 // Tap the bottom right circle button
 - (void)didTapLocationButton:(id)arg1;
 @end
 
+@interface RootViewController ()
+- (void)enterFollowingMode;
+@end
+
 RootViewController *rootViewController=nil;
 
-//TODO: Can be in RootViewController's category or extension?
-@interface ForTimerClass : NSObject
-- (void)startTimer;
-- (void)tapLocationButton:(NSTimer*)timer;
-@end
-
-@implementation ForTimerClass
-- (void)startTimer {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.25f
-                                             target:self
-                                           selector:@selector(tapLocationButton:)
-                                           userInfo:nil
-                                            repeats:NO
-                      ];
+%hook RootViewController
+%new
+- (void)enterFollowingMode {
+#define TIME_ENTER_FOLLOWING_MODE 1.5
+    NSTimer *timer = [NSTimer timerWithTimeInterval:TIME_ENTER_FOLLOWING_MODE repeats:NO
+                                              block:^(NSTimer *timer){
+                                                    [self didTapLocationButton:[%c(AZImages) locationButton]];
+                                              }];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
-- (void)tapLocationButton:(NSTimer*)timer {
-    [rootViewController didTapLocationButton:[%c(AZImages) locationButton]];
-    [self release];
-}
-@end
 
-
-%hook RootViewController
 //- (void)viewDidLoad{
 - (void)viewWillAppear:(BOOL)arg1 {
     %orig;
-//    id locationButton = [%c(AZImages) locationButton];
-//    [self didTapLocationButton:locationButton];
     
     [self setWatermarkHidden:YES animated:NO];
     
     rootViewController=self;
     
-//    // Will be extracted as optinal
-//    ForTimerClass *forTimer = [%c(ForTimerClass) new];
-//    [forTimer startTimer];
+    if (autoFollowingMode){
+        [self enterFollowingMode];
+    }
     
 #pragma mark - Search Bar related
     
@@ -279,3 +267,12 @@ struct CameraPosition {
     ivar_arrivalTimeLabel.textColor = UIColor.whiteColor;
 }
 %end
+
+%ctor
+{
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.b01s.googlemapsenhancer/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    loadPrefs();
+    
+    if(tweakEnabled) %init;
+}
+

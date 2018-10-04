@@ -5,6 +5,26 @@
 	<key>items</key>
 	<array>
 		<dict>
+			<key>label</key>
+			<string></string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>label</key>
+			<string>Compass Mode at startup</string>
+			<key>key</key>
+			<string>autoFollowingMode</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
@@ -98,6 +118,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Following Mode</string>
+	<string>Compass Mode</string>
 </dict>
 </plist>

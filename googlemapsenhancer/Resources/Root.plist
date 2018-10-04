@@ -11,6 +11,20 @@
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>label</key>
+			<string>Enabled</string>
+			<key>key</key>
+			<string>tweakEnabled</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>label</key>
@@ -22,7 +36,7 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Following Mode</string>
+			<string>Compass Mode</string>
 			<key>detail</key>
 			<string>FollowingModeListController</string>
 		</dict>
