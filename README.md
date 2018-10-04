@@ -1,8 +1,5 @@
 # GoogleMapsEnhancer
 
-Compatible with iOS 11.
-Tested on Google Maps ver. 5.0 and 5.1.
-
 GoogleMapsEnahancer brings you some features;
 
 * Make some UIs translucent
@@ -19,7 +16,11 @@ GoogleMapsEnahancer brings you some features;
 
 * Automatically enter compass mode at startup
 
+Also suitable for CarPlay (CarBridge)!
 
 Configure options from Settings app.
+
+Compatible with iOS 11.
+Tested on Google Maps ver. 5.0 and 5.1.
 
 Greatly appreciate Sayed's contribution!
