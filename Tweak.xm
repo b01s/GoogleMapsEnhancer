@@ -77,50 +77,19 @@ struct GMSVectorMapMode {
 @end
 
 @interface RootViewController ()
-- (void)startTimer;
-- (void)tapLocationButton:(NSTimer*)timer;
+- (void)enterFollowingMode;
 @end
 
 RootViewController *rootViewController=nil;
 
-//TODO: Can be in RootViewController's category or extension?
-@interface ForTimerClass : NSObject
-- (void)startTimer;
-- (void)tapLocationButton:(NSTimer*)timer;
-@end
-
-@implementation ForTimerClass
-- (void)startTimer {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.5f
-                                             target:self
-                                           selector:@selector(tapLocationButton:)
-                                           userInfo:nil
-                                            repeats:NO
-                      ];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-}
-- (void)tapLocationButton:(NSTimer*)timer {
-    [rootViewController didTapLocationButton:[%c(AZImages) locationButton]];
-    [self release];
-}
-@end
-
-
 %hook RootViewController
-
 %new
-- (void)startTimer {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.25f
-                                             target:self
-                                           selector:@selector(tapLocationButton:)
-                                           userInfo:nil
-                                            repeats:NO
-                      ];
+- (void)enterFollowingMode {
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 repeats:NO
+                                              block:^(NSTimer *timer){
+                                                    [self didTapLocationButton:[%c(AZImages) locationButton]];
+                                              }];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-}
-%new
-- (void)tapLocationButton:(NSTimer*)timer {
-    [self didTapLocationButton:[%c(AZImages) locationButton]];
 }
 
 //- (void)viewDidLoad{
@@ -131,10 +100,7 @@ RootViewController *rootViewController=nil;
     
     rootViewController=self;
     
-//    // Will be extracted as optinal
-//    ForTimerClass *forTimer = [%c(ForTimerClass) new];
-//    [forTimer startTimer];
-    [self startTimer];
+    [self enterFollowingMode];
     
 #pragma mark - Search Bar related
     
