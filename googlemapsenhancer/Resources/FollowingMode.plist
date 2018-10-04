@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Zoom Level</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>21</integer>
+			<key>min</key>
+			<integer>10</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>17.25</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>cameraZoomLevelValue</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Look-ahead</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.4718</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>cameraLookAheadValue</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Viewing Angle</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>100</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<integer>65</integer>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>cameraViewingAngleValue</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string></string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>label</key>
+			<string>3D Buildings</string>
+			<key>key</key>
+			<string>buildings3DMode</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Following Mode</string>
+</dict>
+</plist>

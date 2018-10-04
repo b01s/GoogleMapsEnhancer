@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Opacity of Search Bar</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.5</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>alphaOfSearchBar</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Opacity of Footer Tab Bar</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.5</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>alphaOfFooterTabBar</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Default Mode      </string>
+</dict>
+</plist>

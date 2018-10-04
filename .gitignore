@@ -1,0 +1,12 @@
+### https://raw.github.com/github/gitignore/cfd32d9174496f7d6d54a43929973e6a8d4deb6e/theos.gitignore
+
+._*
+*debug*.deb
+.debmake
+_
+obj
+.theos
+.DS_Store
+
+
+

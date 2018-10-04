@@ -1,0 +1,9 @@
+Package: com.b01s.googlemapsenhancer
+Name: GoogleMapsEnhancer
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: b01s <b01s2791@gmail.com>
+Author: b01s <b01s2791@gmail.com>
+Section: Tweaks

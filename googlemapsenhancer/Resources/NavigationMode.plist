@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Opacity of Header </string>
+			<key>footerText</key>
+			<string>You can change the opacity ONLY IF the Translucent Mode is ON.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>label</key>
+			<string>Translucent Mode</string>
+			<key>key</key>
+			<string>translucentRouteGuidanceHeaderMode</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.2</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>alphaOfRouteGuidanceHeader</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Opacity of Footer</string>
+			<key>footerText</key>
+			<string>You can change the opacity ONLY IF the Translucent Mode is ON.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>label</key>
+			<string>Translucent Mode</string>
+			<key>key</key>
+			<string>translucentRouteGuidanceFooterMode</string>
+		</dict>
+		<dict>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.b01s.googlemapsenhancer/settingschanged</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.2</real>
+			<key>defaults</key>
+			<string>com.b01s.googlemapsenhancer</string>
+			<key>key</key>
+			<string>alphaOfRouteGuidanceFooter</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Navigation Mode</string>
+</dict>
+</plist>
