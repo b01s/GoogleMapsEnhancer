@@ -8,7 +8,7 @@ GoogleMapsEnahancer brings you some features;
 
 - Adjust the camera position in compass mode
   * Zoom level, look-ahead, and viewing angle
-  * You can set it like the driving mode in Android ver.
+  * You can set it like the driving mode in Android ver. (<a href='https://github.com/b01s/GoogleMapsEnhancer/blob/master/images/enter_compass_mode.gif'>View gif</a>)
 
 
 - Disable 3D buildings in compass mode
