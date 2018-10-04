@@ -52,19 +52,8 @@
 }
 
 -(void)donate {
-//    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//    pasteboard.string = @"b01s2791@gmail.com";
-    
-//    NSURL *url1 = [NSURL URLWithString:@"com.amazon.mobile.shopping.web://www.amazon.com/gp/product/B01FIS82WQ"];
-//    NSURL *url2 = [NSURL URLWithString:@"https://www.amazon.com/dp/B01FIS82WQ"];
-        NSURL *url2 = [NSURL URLWithString:@"https://ko-fi.com/V7V3KCB0"];
-    
-//    if ([[UIApplication sharedApplication] canOpenURL:url1]) {
-//        [[UIApplication sharedApplication] openURL:url1];
-//    }
-//    else {
-        [[UIApplication sharedApplication] openURL:url2];
-//    }
+    NSURL *url = [NSURL URLWithString:@"https://ko-fi.com/V7V3KCB0"];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void)openGitHub {
