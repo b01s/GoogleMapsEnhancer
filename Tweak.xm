@@ -53,7 +53,7 @@ static void loadPrefs()
 }
 
 
-#pragma mark - Auto following mode
+#pragma mark - Auto compass mode
 
 @interface AZImages
 + (id)locationButton;

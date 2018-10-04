@@ -36,7 +36,7 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Following Mode</string>
+			<string>Compass Mode</string>
 			<key>detail</key>
 			<string>FollowingModeListController</string>
 		</dict>
