@@ -1,5 +1,5 @@
-Package: com.b01s.googlemapsenhancer
-Name: GoogleMapsEnhancer
+Package: com.b01s.gmenhancer
+Name: GMEnhancer
 Depends: mobilesubstrate
 Version: 1.0
 Architecture: iphoneos-arm
