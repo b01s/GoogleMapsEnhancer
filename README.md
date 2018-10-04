@@ -1,6 +1,6 @@
 # GoogleMapsEnhancer
 
-GoogleMapsEnahancer brings you some features;
+GoogleMapsEnhancer brings you some features;
 
 - Make some UIs translucent
   * Search bar, footer tab bar, background of route guidance
