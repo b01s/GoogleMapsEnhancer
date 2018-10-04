@@ -11,7 +11,7 @@ static BOOL autoFollowingMode = NO;
 static float cameraZoomLevelValue = 17.25;
 static float cameraLookAheadValue = 0.4718;
 static float cameraViewingAngleValue = 65;
-static BOOL buildings3DMode = NO;
+static BOOL buildings3DMode = YES;
 
 static BOOL translucentRouteGuidanceHeaderMode = YES;
 static float alphaOfRouteGuidanceHeader = 0.2;
@@ -117,7 +117,7 @@ RootViewController *rootViewController=nil;
 }
 %end
 
-#pragma mark - Driving mode like camera related
+#pragma mark - Navigation mode like camera related
 
 struct Point2D {};
 
@@ -267,6 +267,8 @@ struct CameraPosition {
     ivar_arrivalTimeLabel.textColor = UIColor.whiteColor;
 }
 %end
+
+#pragma mark - ctor
 
 %ctor
 {

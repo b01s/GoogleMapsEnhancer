@@ -5,6 +5,8 @@
 	<key>items</key>
 	<array>
 		<dict>
+			<key>footerText</key>
+			<string>Changes might not be reflected immediately.</string>
 			<key>label</key>
 			<string>Settings</string>
 			<key>cell</key>
