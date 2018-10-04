@@ -6,6 +6,8 @@ static float alphaOfSearchBar = 0.5;
 
 static float alphaOfFooterTabBar = 0.5;
 
+static BOOL autoFollowingMode = NO;
+
 static float cameraZoomLevelValue = 17.25;
 static float cameraLookAheadValue = 0.4718;
 static float cameraViewingAngleValue = 65;
@@ -34,6 +36,7 @@ static void loadPrefs()
         
         alphaOfFooterTabBar = floatValueForKey(@"alphaOfFooterTabBar", 0.5);
         
+        autoFollowingMode = boolValueForKey(@"autoFollowingMode", NO);
         cameraZoomLevelValue = floatValueForKey(@"cameraZoomLevelValue", 17.25);
         cameraLookAheadValue = floatValueForKey(@"cameraLookAheadValue", 0.4718);
         cameraViewingAngleValue = floatValueForKey(@"cameraViewingAngleValue", 65);
@@ -70,7 +73,7 @@ struct GMSVectorMapMode {
 }
 // Search bar
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
-//TODO: Will hide Google logo mark
+// Hide Google logo mark
 - (void)setWatermarkHidden:(_Bool)arg1 animated:(_Bool)arg2;
 // Tap the bottom right circle button
 - (void)didTapLocationButton:(id)arg1;
@@ -85,7 +88,8 @@ RootViewController *rootViewController=nil;
 %hook RootViewController
 %new
 - (void)enterFollowingMode {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:1 repeats:NO
+#define TIME_ENTER_FOLLOWING_MODE 1.5
+    NSTimer *timer = [NSTimer timerWithTimeInterval:TIME_ENTER_FOLLOWING_MODE repeats:NO
                                               block:^(NSTimer *timer){
                                                     [self didTapLocationButton:[%c(AZImages) locationButton]];
                                               }];
@@ -100,7 +104,9 @@ RootViewController *rootViewController=nil;
     
     rootViewController=self;
     
-    [self enterFollowingMode];
+    if (autoFollowingMode){
+        [self enterFollowingMode];
+    }
     
 #pragma mark - Search Bar related
     
