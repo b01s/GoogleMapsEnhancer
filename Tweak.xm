@@ -2,12 +2,12 @@
 
 static NSMutableDictionary *prefs;
 
-static float alphaOfSearchBar = 0.5;
+static BOOL tweakEnabled = YES;
 
+static float alphaOfSearchBar = 0.5;
 static float alphaOfFooterTabBar = 0.5;
 
 static BOOL autoFollowingMode = NO;
-
 static float cameraZoomLevelValue = 17.25;
 static float cameraLookAheadValue = 0.4718;
 static float cameraViewingAngleValue = 65;
@@ -32,8 +32,9 @@ static void loadPrefs()
 {
     prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.b01s.googlemapsenhancer.plist"];
     if(prefs) {
-        alphaOfSearchBar = floatValueForKey(@"alphaOfSearchBar", 0.5);
+        tweakEnabled = boolValueForKey(@"tweakEnabled", YES);
         
+        alphaOfSearchBar = floatValueForKey(@"alphaOfSearchBar", 0.5);
         alphaOfFooterTabBar = floatValueForKey(@"alphaOfFooterTabBar", 0.5);
         
         autoFollowingMode = boolValueForKey(@"autoFollowingMode", NO);
@@ -51,11 +52,6 @@ static void loadPrefs()
     [prefs release];
 }
 
-%ctor
-{
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.b01s.googlemapsenhancer/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-    loadPrefs();
-}
 
 #pragma mark - Auto following mode
 
@@ -271,3 +267,12 @@ struct CameraPosition {
     ivar_arrivalTimeLabel.textColor = UIColor.whiteColor;
 }
 %end
+
+%ctor
+{
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.b01s.googlemapsenhancer/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    loadPrefs();
+    
+    if(tweakEnabled) %init;
+}
+
