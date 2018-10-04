@@ -3,7 +3,7 @@ Name: GoogleMapsEnhancer
 Depends: mobilesubstrate
 Version: 1.0
 Architecture: iphoneos-arm
-Description: Enhance your Googls Maps
+Description: Enhance your Google Maps
 Maintainer: b01s <b01s2791@gmail.com>
 Author: b01s <b01s2791@gmail.com>
 Section: Tweaks
