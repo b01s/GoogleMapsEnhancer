@@ -16,6 +16,12 @@ GoogleMapsEnhancer brings you some features;
 
 - Automatically enter compass mode at startup
 
+
+- Hide Google logo
+
+
+
+
 Also suitable for CarPlay (CarBridge)!
 
 Configure options from Settings app.
